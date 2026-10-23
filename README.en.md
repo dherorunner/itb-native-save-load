@@ -37,7 +37,7 @@ and ModLoader 2.9.6. No other mod dependency is required.
 2. If ModLoader is not installed, install
    [ITB-ModLoader 2.9.6](https://github.com/itb-community/ITB-ModLoader/releases/tag/v2.9.6) following the
    [official instructions](https://github.com/itb-community/ITB-ModLoader/tree/v2.9.6#installation).
-3. Download `ITB-Native-Save-Load-v0.4.7-windows.zip` from Releases, unzip it and copy the
+3. Download [ITB-Native-Save-Load-v0.4.7-windows.zip](https://github.com/dherorunner/itb-native-save-load/releases/download/v0.4.7/ITB-Native-Save-Load-v0.4.7-windows.zip), unzip it and copy the
    **`itb_sl` folder** into the game's `mods` directory, then enable it in ModLoader's mod management
    screen.
 

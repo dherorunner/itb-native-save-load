@@ -28,7 +28,7 @@
 1. 关闭游戏，备份整个游戏用户数据目录，详见[安装、卸载与备份](INSTALL.zh-CN.md)。
 2. 尚未安装 ModLoader 时，按[官方说明](https://github.com/itb-community/ITB-ModLoader/tree/v2.9.6#installation)
    安装 [ITB-ModLoader 2.9.6](https://github.com/itb-community/ITB-ModLoader/releases/tag/v2.9.6)，已装可跳过。
-3. 从 Releases 下载 `ITB-Native-Save-Load-v0.4.7-windows.zip`，解压后把其中的 **`itb_sl` 文件夹**
+3. 点击下载 [ITB-Native-Save-Load-v0.4.7-windows.zip](https://github.com/dherorunner/itb-native-save-load/releases/download/v0.4.7/ITB-Native-Save-Load-v0.4.7-windows.zip)，解压后把其中的 **`itb_sl` 文件夹**
    复制到游戏目录的 `mods` 下，再在 ModLoader 的 Mod 管理界面启用它。
 
 最终应存在 `Into the Breach/mods/itb_sl/scripts/init.lua` 与
