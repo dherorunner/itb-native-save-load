@@ -1,0 +1,42 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build mod package
+        shell: pwsh
+        run: python -X utf8 -B tools/build_mod.py
+
+      - name: Verify build output
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem -Path build -Recurse -Filter *.zip | Select-Object -First 1
+          if (-not $zip) { throw "build_mod.py produced no ZIP" }
+          $package = Join-Path (Split-Path $zip.FullName -Parent) "package/itb_sl"
+          foreach ($name in @("scripts/init.lua", "native/itb_sl_p04.dll", "manifest.json", "VERSION")) {
+            $target = Join-Path $package $name
+            if (-not (Test-Path $target)) { throw "missing package file: $name" }
+          }
+          "ARTIFACT $($zip.Name) $($zip.Length) bytes"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: itb-native-save-load-build
+          path: build/**/*.zip
+          if-no-files-found: error

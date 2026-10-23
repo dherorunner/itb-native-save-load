@@ -1,0 +1,72 @@
+{
+  "schema": "source-export-v1",
+  "files": {
+    "src/mod/scripts/reader.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/reader.lua",
+      "origin_sha256": "db0f0128f9a7baf68029bf616fc0a739e44021681077221497a4976be7f0fe62",
+      "export_sha256": "db0f0128f9a7baf68029bf616fc0a739e44021681077221497a4976be7f0fe62"
+    },
+    "src/mod/scripts/store.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/store.lua",
+      "origin_sha256": "b5d7becbed3390adf5085696e1fdd0a3e490b374891b2e99836e657b4a2b689e",
+      "export_sha256": "b5d7becbed3390adf5085696e1fdd0a3e490b374891b2e99836e657b4a2b689e"
+    },
+    "src/mod/scripts/controller.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/controller.lua",
+      "origin_sha256": "eb9140da34c210d85e1aecd3c437fd8e9e3026bcd52e03823680c2f9e646ebca",
+      "export_sha256": "eb9140da34c210d85e1aecd3c437fd8e9e3026bcd52e03823680c2f9e646ebca"
+    },
+    "src/mod/scripts/ui.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/ui.lua",
+      "origin_sha256": "537dd869dc2bd6ff21310f89165c16a84d30ea9492f772fbb3f853acec50b12f",
+      "export_sha256": "537dd869dc2bd6ff21310f89165c16a84d30ea9492f772fbb3f853acec50b12f"
+    },
+    "src/mod/scripts/escape_menu.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/escape_menu.lua",
+      "origin_sha256": "49ad18aed28a34c19ba00c90183a081e2388b1e9d8905a586b29da2c2ff71148",
+      "export_sha256": "49ad18aed28a34c19ba00c90183a081e2388b1e9d8905a586b29da2c2ff71148"
+    },
+    "src/mod/scripts/init.lua": {
+      "origin": "src/itb_sl/p04_mod/scripts/init.lua",
+      "origin_sha256": "d80dfc34eb6fa87f3985bcb38363c6fad6c1aefae65e0e3218e382b8f4cc6409",
+      "export_sha256": "d80dfc34eb6fa87f3985bcb38363c6fad6c1aefae65e0e3218e382b8f4cc6409"
+    },
+    "src/native/native_roundtrip.cpp": {
+      "origin": "src/itb_sl/native/native_roundtrip.cpp",
+      "origin_sha256": "25bd2123d8f84bd49b37df63be89eb5a94c7b2364856c2acfbce6d51f229f528",
+      "export_sha256": "899160dfe368c85b7dffd867e121b638fc548a67f7838ceafb7072b9f0e49379",
+      "inactive_research_path_replacements": 4
+    },
+    "src/native/native_action.h": {
+      "origin": "src/itb_sl/native/native_action.h",
+      "origin_sha256": "2d2d954287bed62fa9ed0872128ebbc2ddcfd974a219f559a55bcb51c5863ded",
+      "export_sha256": "586115a34bd81464ab13322c8b708b20324b860e03b3440bb02377d8fea7d176",
+      "inactive_research_path_replacements": 0
+    },
+    "src/native/request_channel.h": {
+      "origin": "src/itb_sl/native/request_channel.h",
+      "origin_sha256": "2330a3c14a5d55be57ec4fc5b7ee2ec7a8b9828c84565fc5c42056f5c4e0a7b0",
+      "export_sha256": "beb9bacb84657b3b27b4a16b147bc2d48c3a61d0ae0ead2f79989eb0992817f3",
+      "inactive_research_path_replacements": 0
+    },
+    "src/native/p04_native.inc": {
+      "origin": "src/itb_sl/native/p04_native.inc",
+      "origin_sha256": "f395ad6ebde7809e3639f5e8f4d4dcc49bff34c05eff6d1422c2d71de04bc4d4",
+      "export_sha256": "3d90e2ce15288f29a92534087c7641e38b3d6a006be4b94571d7db101fc913b9",
+      "inactive_research_path_replacements": 0
+    },
+    "src/native/p04_service.h": {
+      "origin": "src/itb_sl/native/p04_service.h",
+      "origin_sha256": "9a2b554d116a1ea208d87c3d6da26f999e70962fea170589ff099e627cc99619",
+      "export_sha256": "ae9eabee1b7f73a18b4ded28755360cd4dc59a5b57d88dfa89408285645c0a9d",
+      "inactive_research_path_replacements": 0
+    },
+    "src/native/p04_service.cpp": {
+      "origin": "src/itb_sl/native/p04_service.cpp",
+      "origin_sha256": "8831870d817a9b8783e8bfc8e45248da007257e641c2c1950b880aaf6dcae5fc",
+      "export_sha256": "42c9ed9653bd63f8bad136331743b91863660832d7f6245a4613737e09593440",
+      "inactive_research_path_replacements": 0
+    }
+  },
+  "note": "Only non-P04 research/demo/test path strings anonymized; P04 runtime paths use the game and LOCALAPPDATA."
+}

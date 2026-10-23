@@ -1,0 +1,37 @@
+{
+  "schema": "itb-native-save-load-release-v1",
+  "version": "0.4.7",
+  "mod_id": "itb_sl",
+  "name_zh": "陷阵之志：原生存读档",
+  "name_en": "Into the Breach: Native Save & Load",
+  "author": "dherorunner",
+  "license": "MIT",
+  "modloader": "2.9.6",
+  "game_version_label": "1.2.93",
+  "supported_exe": "31fe352655982398fb3ee8b0bbe80efd5d65e3a9aa11e3dc39d0364354493fe9",
+  "platform": "Windows x86 game; keyboard and mouse",
+  "entry": "scripts/init.lua",
+  "native": "native/itb_sl_p04.dll",
+  "protocol": "p04-v2",
+  "bridge_abi": 2,
+  "collector": "p04-live-v2",
+  "ui_bridge": "p04-escape-v1",
+  "capabilities": {
+    "manual_slot": true,
+    "auto_slot": true,
+    "same_process_only": true,
+    "same_battle_only": true
+  },
+  "accepted_dll_sha256": "d82ed84be918608f981480e2c8150f0aad4cb803393948ade2df172b5350d089",
+  "documents": [
+    "README.md",
+    "INSTALL.zh-CN.md",
+    "KNOWN_ISSUES.zh-CN.md",
+    "CHANGELOG.md",
+    "VALIDATION.md",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE",
+    "BUILDING.md",
+    "RELEASE_NOTES.md"
+  ]
+}
