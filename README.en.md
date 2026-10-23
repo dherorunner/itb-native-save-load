@@ -5,7 +5,8 @@
 [中文](README.md) · [![build](https://github.com/dherorunner/itb-native-save-load/actions/workflows/build.yml/badge.svg)](https://github.com/dherorunner/itb-native-save-load/actions/workflows/build.yml)
 
 An unofficial mod that saves a battle and loads it back from inside the game: press
-**Esc → Save / Load**. It calls the game's own save/load functions, so no Python, console or external
+**Esc → 存档 / 读档 (Save / Load)**. The in-game buttons are Chinese; translations are provided below.
+It calls the game's own save/load functions, so no Python, console or external
 save tool is needed while playing. The game and ModLoader must be installed separately; neither is
 distributed here.
 
@@ -24,8 +25,15 @@ business source is unchanged and this package reuses the v5 candidate DLL byte-f
 
 ## For players: install
 
-1. Close the game and back up your whole user data directory — see [INSTALL.zh-CN.md](INSTALL.zh-CN.md)
-   (Chinese).
+**[Download the v0.4.7 Windows player ZIP](https://github.com/dherorunner/itb-native-save-load/releases/download/v0.4.7/ITB-Native-Save-Load-v0.4.7-windows.zip)** · [Release page](https://github.com/dherorunner/itb-native-save-load/releases/tag/v0.4.7)
+
+Requirements: Windows ITB 1.2.93 with the exact EXE hash under Requirements below, keyboard/mouse,
+and ModLoader 2.9.6. No other mod dependency is required.
+
+1. Close the game. Press Win+R, enter `shell:Personal`, then open `My Games/Into the Breach`.
+   Copy that **entire folder**, including all `profile_*` folders and settings, to a safe location outside the game directories.
+   This also works when Windows Documents is redirected to OneDrive. If you have used the mod before,
+   separately back up `%LOCALAPPDATA%/ITB-SL/P04` (open it with Win+R). A missing mod data folder is normal before initialization.
 2. If ModLoader is not installed, install
    [ITB-ModLoader 2.9.6](https://github.com/itb-community/ITB-ModLoader/releases/tag/v2.9.6) following the
    [official instructions](https://github.com/itb-community/ITB-ModLoader/tree/v2.9.6#installation).
@@ -33,9 +41,83 @@ business source is unchanged and this package reuses the v5 candidate DLL byte-f
    **`itb_sl` folder** into the game's `mods` directory, then enable it in ModLoader's mod management
    screen.
 
+In Steam, right-click the game in your library → Manage → Browse local files. The folder containing
+`Breach.exe` is the game root. Extract the **loader** into this root, overwriting as its official instructions require;
+copy the **mod's `itb_sl` folder** into `mods` (create `mods` if missing). Do not install either ZIP into the save folder.
+Apply/restart as requested by ModLoader after enabling the mod.
+
 The result should contain `Into the Breach/mods/itb_sl/scripts/init.lua` and
 `Into the Breach/mods/itb_sl/native/itb_sl_p04.dll`, with no extra nesting level.
 GitHub's auto-generated "Source code" archives are not installable mods.
+
+To check the game EXE, open the game root in File Explorer, type `powershell` in the address bar and
+press Enter. Run `Get-FileHash -Algorithm SHA256 -LiteralPath .\Breach.exe` and compare the Hash column
+with Requirements below (case does not matter). A mismatched EXE is unsupported.
+
+**Initial installation check:** enter a profile and battle, then open **Esc → 存档 / 读档**.
+The panel should show **战前自动档** (auto save) and **临时手动槽** (manual slot).
+An empty slot is normal initially. Opening the panel confirms the entry loads; it does not verify a save/load round trip.
+
+## First save and load
+
+Keep the game running and stay in the same battle. Make a full backup before trying this mod.
+
+| Chinese button / status | Meaning |
+|---|---|
+| 保存到临时手动槽 | Save to the temporary manual slot |
+| 读取临时手动槽 | Load the manual slot |
+| 读取战前档 | Load the pre-deployment auto save |
+| 关闭 | Close the panel |
+| 可用 / 空 | Available / Empty |
+| 本次进程外 / 其他战斗 | From an earlier game process / Another battle; cannot load |
+
+1. Finish deployment and wait for a stable player turn with no animation. Open the panel and choose
+   **保存到临时手动槽**. Confirm overwriting if a manual save already exists.
+2. Wait for processing to finish. Reopen the panel to check **已保存** (Saved) and a manual slot marked **可用** (Available).
+3. Close the panel and try your moves. To return, reopen the panel, choose **读取临时手动槽** and confirm.
+   **Loading discards actions made since that save.** Canceling the confirmation does not load.
+4. Wait for completion. The panel can show **已读取，可继续操作** (Loaded; ready to continue).
+   Check the board and mech positions before continuing.
+
+For an **auto save**, enter a new ordinary battle normally from the map with the mod enabled.
+The mod attempts capture during a stable pre-deployment window. Check that the auto slot is **可用**;
+after deploying or acting in that battle, use **读取战前档** to return to deployment.
+Continuing an already-started battle does not create a missing auto save. Manual saving/loading does not replace
+an already-captured auto save for that battle; the next successful new-battle capture replaces it.
+
+Only Available slots can load. Saving is blocked during deployment, enemy turns, animations or other dialogs;
+the disabled appearance can be unclear, so wait for a stable player turn and reopen the panel.
+Restarting the game or entering another battle makes old slots unreadable, even if files remain on disk.
+Use the game's normal Continue for persistent progress; these temporary slots are not long-term backups.
+
+## Upgrade, uninstall and recover
+
+Close the game and back up both data folders first. For an upgrade, move the old `mods/itb_sl` outside
+`mods`, then copy in the complete new folder. Do not mix DLLs/scripts or keep a renamed old mod inside `mods`.
+For uninstalling this mod, disable it and restart, or move `mods/itb_sl` outside the game directory while the game is closed.
+Keep the data folders; uninstalling does not restore progress or make old slots readable.
+Uninstalling this mod does not require removing ModLoader; to remove the loader, follow its
+[official uninstall instructions](https://github.com/itb-community/ITB-ModLoader/tree/v2.9.6#uninstallation).
+
+To restore progress, close the game, preserve the current user data folder elsewhere, then copy your **complete matching backup**
+back to its original location. This discards progress made after that backup. Do not restore saves over the game installation;
+the resulting path should be `My Games/Into the Breach/profile_*`, with no extra nesting.
+If Steam reports a cloud conflict, preserve copies and confirm their timestamps before choosing which to keep.
+
+## Troubleshooting and feedback
+
+- **No menu entry:** check ModLoader/mod enablement and folder nesting, then enter a profile and battle.
+- **Unsupported version:** compare the EXE hash; do not bypass the check.
+- **Native service fails to load:** reinstall the complete mod folder with the game closed and check whether security software quarantined its DLL.
+  Do not disable protection or obtain replacement DLLs from unknown sources.
+- **Save/load failure or service disabled for this process:** stop retrying, preserve the current state and record the full message.
+  If copying files for evidence while the game is running, treat the copy as an incident snapshot, not a verified consistent backup.
+
+Report issues through [GitHub Issues](https://github.com/dherorunner/itb-native-save-load/issues). Include Mod/ModLoader/game/Windows versions,
+EXE hash, other mods, exact steps, expected/actual behavior and error text, and whether the game was restarted or the battle changed.
+Review screenshots/logs for personal paths or game data before sharing; do not upload whole save or backup folders.
+The [detailed limitations](KNOWN_ISSUES.zh-CN.md) are in Chinese: other tasks/mod combinations, resolutions, special terrain/units and all unit fields
+are not fully validated; profile internal IDs must be 1–32 ASCII letters, digits, underscores or hyphens.
 
 ## For developers: build from source
 
@@ -50,6 +132,11 @@ python -X utf8 -B tools/build_mod.py
 The output goes to `build/<timestamp>/package/itb_sl`, together with a source-build ZIP. Recompiling is
 not guaranteed to reproduce the released DLL byte-for-byte. See [BUILDING.md](BUILDING.md) for details
 (Chinese); every push to `main` is also compiled on a clean Windows runner by GitHub Actions.
+
+Run that command from the repository root (the folder containing `release.json` and `tools`). Edit the
+individual Lua modules in `src/mod/scripts`, not the generated `scripts/init.lua` in a build package.
+Review the diff, build once, and state clearly whether validation was offline or in game when opening a pull request.
+CI builds and checks package files; it does not run the game or prove gameplay correctness.
 
 ## Repository layout
 

@@ -8,10 +8,15 @@
 
 ## 下载与安装
 
-下载 **`ITB-Native-Save-Load-v0.4.7-windows.zip`**。关闭游戏并备份完整的游戏用户数据目录；
+下载 **[ITB-Native-Save-Load-v0.4.7-windows.zip](https://github.com/dherorunner/itb-native-save-load/releases/download/v0.4.7/ITB-Native-Save-Load-v0.4.7-windows.zip)**。关闭游戏并备份完整的游戏用户数据目录；
 安装 [ITB-ModLoader 2.9.6](https://github.com/itb-community/ITB-ModLoader/releases/tag/v2.9.6) 后，
 把 ZIP 内的 `itb_sl` 文件夹复制到游戏的 `mods` 目录，再在加载器中启用。
 运行不需要 Python 或编译器；GitHub 自动生成的“Source code”压缩包不是可安装的 Mod。
+
+新手请按[完整安装指南](https://github.com/dherorunner/itb-native-save-load/blob/main/INSTALL.zh-CN.md)操作，
+再看[首次保存与读取](https://github.com/dherorunner/itb-native-save-load/blob/main/README.md)。
+安装后进入档案及战局，按 Esc 应能看到“存档 / 读档”；能打开面板只说明入口加载成功。
+[English instructions](https://github.com/dherorunner/itb-native-save-load/blob/main/README.en.md).
 
 ## 兼容性
 
@@ -29,4 +34,6 @@
 v0.4.7 完成了离线检查，以及菜单间距、代表按钮与 SL 入口开关的最小实机验证。
 manual／auto 存读闭环的单案例证据来自 0.4.6；存读业务源码未变，本包沿用 v5 候选 DLL 的原字节，
 **0.4.7 没有重新实测整个闭环**。其他任务、其他 Mod 组合、全部单位字段和窗口缩放未完整覆盖。
-细节见包内 README、安装备份说明、已知限制与 [VALIDATION.md](VALIDATION.md)。
+细节见[验证范围](https://github.com/dherorunner/itb-native-save-load/blob/main/VALIDATION.md)与
+[问题处理](https://github.com/dherorunner/itb-native-save-load/blob/main/KNOWN_ISSUES.zh-CN.md)。
+上述完整网页链接也可用于 Release 正文；仓库文档后续可修订，已发布 ZIP 内说明以下载包本身为准。

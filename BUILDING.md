@@ -16,7 +16,9 @@
 
 ## 构建
 
-在仓库根目录执行：
+从仓库页面的“Code → Download ZIP”下载源码并解压，或使用已安装的 Git 克隆本仓库。
+进入能同时看到 `release.json`、`src` 和 `tools` 的文件夹，这就是仓库根目录。
+在资源管理器地址栏输入 `powershell` 并按 Enter，先执行 `python --version` 确认 Python 可用，再执行：
 
 ```powershell
 python -X utf8 -B tools/build_mod.py
@@ -25,6 +27,28 @@ python -X utf8 -B tools/build_mod.py
 脚本调用 x86 编译环境，使用 `ITB_SL_NATIVE_EXPERIMENT=1`、`ITB_SL_P04_SERVICE=1` 编译原生模块，
 再把 Lua 模块与说明文档打包。输出在 `build/<时间戳>/package/itb_sl`，同时生成源码构建 ZIP；
 每次创建新目录，不覆盖旧产物，也不触碰游戏安装目录或存档。
+
+成功时终端输出 `BUILT` 及 `ITB-Native-Save-Load-v0.4.7-local-build.zip` 的路径。
+ZIP 中应直接有 `itb_sl/scripts/init.lua` 和 `itb_sl/native/itb_sl_p04.dll`。
+编译失败时，查看终端输出的 `OUTPUT` 目录下 `environment.log`、`native.log`、`service.log`、`link.log`
+中已生成的日志；缺少工具链时先补齐环境，不要从未知来源补 DLL。
+
+## 贡献与验证
+
+- 使用问题先到 [Issues](https://github.com/dherorunner/itb-native-save-load/issues) 反馈，附上[问题报告所需信息](KNOWN_ISSUES.zh-CN.md)。
+  功能建议请描述具体使用场景；较大的修改建议先开 Issue 沟通范围。
+- 修改 Lua 时编辑 `src/mod/scripts/` 中的独立模块；构建器会合并为包内 `scripts/init.lua`，不要直接修改生成文件。
+  修改原生逻辑时编辑 `src/native/`，保持 x86 目标和既有协议一致。
+- 提交 Pull Request 时说明改动解决什么问题、怎样验证、哪些还未验证。保持修改聚焦；不要包含构建产物、
+  游戏 EXE/DLL、个人存档或日志中的隐私信息。源码中的构建所需头文件应正常保留。
+- 代码变更至少运行一次上述构建，并核对包内 DLL、Lua 入口、VERSION 和 manifest.json 是否存在。
+  GitHub Actions 也会编译并检查这些文件；**它不启动游戏，也不验证存读结果**。
+  纯文档修改通常只需检查步骤是否符合实现、链接是否有效，以及中英文关键内容是否一致。
+- 若自行做实机验证，先备份完整用户数据，记录游戏哈希、ModLoader 版本、构建身份及操作步骤。
+  只将实际观察到的行为写为通过；构建成功不能代替游戏内验证。
+
+`SOURCE_PROVENANCE.json` 是首次导出的来源记录，修改源码后不要把其中的旧哈希当成当前文件哈希，
+也不要为普通贡献伪造原始来源记录。新的源码构建由产物内 `manifest.json` 记录实际文件哈希。
 
 ## 产物内容
 
